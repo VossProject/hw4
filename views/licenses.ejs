@@ -1,0 +1,60 @@
+<%- include('partials/head') %>
+  <body>
+<%- include('partials/nav') %>
+
+    <main>
+      <h2>Open Source Licenses</h2>
+
+      <article>
+        <h3>Why licenses matter</h3>
+        <p>
+          Public code isn't automatically free to use. The license is what gives you
+          permission. It tells you what you can do with the code and what you have to
+          do in return.
+        </p>
+        <p>
+          Most licenses fall into two groups. Permissive licenses like MIT let you do
+          almost anything, as long as you keep the original copyright notice.
+          Copyleft licenses like the GPL ask that if you share a changed version, you
+          share its code under the same license.
+        </p>
+      </article>
+
+      <article>
+        <h3>The ones you'll see the most</h3>
+        <table>
+          <tr>
+            <th>ID</th>
+            <th>Full name</th>
+            <th>OSI approved</th>
+          </tr>
+          <% for (let id of popular) { %>
+            <tr>
+              <td><%= id %></td>
+              <td><a href="<%= licenses[id].url %>"><%= licenses[id].name %></a></td>
+              <td><%= licenses[id].osiApproved ? "Yes" : "No" %></td>
+            </tr>
+          <% } %>
+        </table>
+      </article>
+
+      <aside>
+        <p>
+          There are a lot more than six. The SPDX list has <%= total %> licenses, and
+          only <%= approved %> of them are approved by the Open Source Initiative.
+        </p>
+      </aside>
+
+      <section class="sources">
+        <h3>Sources</h3>
+        <ul>
+          <li>License data from the <a href="https://www.npmjs.com/package/spdx-license-list">spdx-license-list</a> package</li>
+          <li><a href="https://spdx.org/licenses/">SPDX License List</a></li>
+          <li><a href="https://choosealicense.com/licenses/">Choose a License, Licenses</a></li>
+        </ul>
+      </section>
+    </main>
+
+<%- include('partials/footer') %>
+  </body>
+</html>
